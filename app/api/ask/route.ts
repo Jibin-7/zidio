@@ -29,7 +29,7 @@ export async function POST(req: Request) {
     const ai = new GoogleGenAI({ apiKey })
 
     // Format context for Claude -> Gemini
-    const contextString = contextItems.map((item, index) => `[Source ${index + 1}] (Channel: ${item.channel}): ${item.content}`).join("\n\n")
+    const contextString = contextItems.map((item: any, index: number) => `[Source ${index + 1}] (Channel: ${item.channel}): ${item.content}`).join("\n\n")
 
     const prompt = `
 You are an AI assistant for a Customer Feedback Intelligence Platform called LOOP.
