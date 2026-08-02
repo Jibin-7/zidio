@@ -1,7 +1,5 @@
 # Project LOOP — AI Customer-Feedback Intelligence Platform
 
-![Project LOOP Logo](/public/window.svg)
-
 Project LOOP is a corporate-grade, multi-tenant web application designed to help SaaS companies ingest, cluster, and make sense of their scattered customer feedback. Support tickets, app-store reviews, survey responses, and sales notes are ingested into a unified database where AI categorizes them, detects trending themes, and even answers plain-English questions grounded in your actual customer feedback.
 
 This project was built to satisfy the **Zidio Development Internship Project** rubric for the Web Development track.
@@ -89,17 +87,6 @@ npm run seed
 npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) in your browser.
-
----
-
-## 📸 Screenshots
-
-*(Replace these with actual screenshots of your application before submitting)*
-
-- **Dashboard**: [Insert Dashboard Screenshot]
-- **Feedback Inbox**: [Insert Inbox Screenshot]
-- **Ask LOOP AI**: [Insert Ask LOOP Screenshot]
-- **VoC Report Generation**: [Insert Report Screenshot]
 
 ---
 
