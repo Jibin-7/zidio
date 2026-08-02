@@ -1,4 +1,4 @@
-import { NextResponse } from "next-auth/next"
+import { NextResponse } from "next/server"
 import { prisma } from "@/lib/db"
 import { getCurrentUser } from "@/lib/session"
 import { z } from "zod"
