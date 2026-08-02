@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Project LOOP — AI Customer-Feedback Intelligence Platform
 
-## Getting Started
+![Project LOOP Logo](/public/window.svg)
 
-First, run the development server:
+Project LOOP is a corporate-grade, multi-tenant web application designed to help SaaS companies ingest, cluster, and make sense of their scattered customer feedback. Support tickets, app-store reviews, survey responses, and sales notes are ingested into a unified database where AI categorizes them, detects trending themes, and even answers plain-English questions grounded in your actual customer feedback.
 
+This project was built to satisfy the **Zidio Development Internship Project** rubric for the Web Development track.
+
+---
+
+## 🚀 Tech Stack
+
+Project LOOP is built on a modern, robust, production-ready stack:
+
+- **Framework**: Next.js 14 (App Router) + TypeScript
+- **Styling**: Tailwind CSS
+- **Database**: PostgreSQL (via Neon)
+- **ORM**: Prisma
+- **Authentication**: NextAuth (Auth.js) with Role-Based Access Control (RBAC)
+- **AI Intelligence**: Google Gemini (via `@google/genai` SDK v2) for zero-shot classification, generative narrative, and RAG.
+- **Charts**: Recharts
+- **Validation**: Zod
+- **Deployment**: Vercel
+
+---
+
+## 📐 Architecture Summary
+
+LOOP follows a strict three-tier architecture ensuring robust security and AI integration:
+
+1. **Client Layer**: React Server & Client Components render the UI and call local Next.js Route Handlers. The client *never* communicates directly with the database or the AI provider.
+2. **API Layer**: Route handlers authenticate the user session, enforce RBAC roles (ADMIN, ANALYST, VIEWER), and strictly scope *every* Prisma query by `workspaceId` ensuring zero cross-tenant data leakage.
+3. **Services & Data Layer**: The API layer orchestrates Prisma calls to PostgreSQL and makes authenticated, server-side calls to the Gemini API to execute the structured classification, VoC report generation, and Ask LOOP RAG pipelines.
+
+---
+
+## 🔒 Demo Credentials Checklist
+
+To verify the Role-Based Access Control (RBAC) implementation, use the following seeded credentials on the live deployment:
+
+- **Admin Account**: `admin@acme.com` / `password123`
+  - *Permissions*: Full access (manage members, import feedback, generate AI reports)
+- **Analyst Account**: `analyst@acme.com` / `password123`
+  - *Permissions*: Can ingest feedback, view dashboards, run Ask LOOP
+- **Viewer Account**: `viewer@acme.com` / `password123`
+  - *Permissions*: Strictly Read-only access to dashboards and generated reports
+
+---
+
+## 💻 Local Setup Steps
+
+Follow these steps to run Project LOOP on your local machine:
+
+### 1. Clone the repository and install dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/project-loop.git
+cd project-loop
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Configure Environment Variables
+Create a `.env` file in the root directory (do not commit this file). Add the following variables:
+```env
+# Database connection string (e.g., Neon or Supabase PostgreSQL)
+DATABASE_URL="postgresql://user:password@host/db?sslmode=require"
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# NextAuth Secret for JWT signing
+NEXTAUTH_SECRET="generate-a-secure-random-string-here"
+NEXTAUTH_URL="http://localhost:3000"
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# AI Configuration (Gemini API)
+GEMINI_API_KEY="your-gemini-api-key-here"
+```
 
-## Learn More
+### 3. Initialize the Database & Run Migrations
+Run the Prisma migrations to build the tables in your Postgres database:
+```bash
+npx prisma migrate dev --name init
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Seed the Database
+Populate the database with a test workspace, users, themes, and 120+ mock feedback items across various channels:
+```bash
+npm run seed
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 5. Start the Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📸 Screenshots
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+*(Replace these with actual screenshots of your application before submitting)*
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Dashboard**: [Insert Dashboard Screenshot]
+- **Feedback Inbox**: [Insert Inbox Screenshot]
+- **Ask LOOP AI**: [Insert Ask LOOP Screenshot]
+- **VoC Report Generation**: [Insert Report Screenshot]
+
+---
+
+*Built with ❤️ during the Zidio Development Internship.*
