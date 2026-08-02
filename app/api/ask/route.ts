@@ -1,4 +1,4 @@
-import { NextResponse } from "next-auth/next"
+import { NextResponse } from "next/server"
 import { getCurrentUser } from "@/lib/session"
 import { semanticSearch } from "@/lib/search"
 import { GoogleGenAI } from "@google/genai"
