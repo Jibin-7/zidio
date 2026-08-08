@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     let processed = 0
 
     const existingThemesData = await prisma.theme.findMany({ where: { workspaceId: user.workspaceId }, select: { name: true } })
-    const existingThemes = existingThemesData.map(t => t.name)
+    const existingThemes = existingThemesData.map((t: any) => t.name)
 
     for (const item of unclassified) {
       const classification = await classifyFeedback(item.content, existingThemes)
