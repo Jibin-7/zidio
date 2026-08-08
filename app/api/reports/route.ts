@@ -38,7 +38,7 @@ export async function POST(req: Request) {
         }
       }
     })
-    const sortedThemes = themes.sort((a, b) => b._count.feedbacks - a._count.feedbacks).slice(0, 3)
+    const sortedThemes = themes.sort((a: any, b: any) => b._count.feedbacks - a._count.feedbacks).slice(0, 3)
 
     const rawFeedback = await prisma.feedback.findMany({
       where,
