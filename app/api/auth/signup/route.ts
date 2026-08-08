@@ -50,7 +50,7 @@ export async function POST(req: Request) {
     return new Response(JSON.stringify({ message: "User created successfully", userId: user.id }), { status: 201 })
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return new Response(JSON.stringify({ error: error.errors }), { status: 400 })
+      return new Response(JSON.stringify({ error: error.issues }), { status: 400 })
     }
     console.error(error)
     return new Response(JSON.stringify({ error: "Internal server error" }), { status: 500 })
