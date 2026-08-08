@@ -57,7 +57,7 @@ Top 3 Themes:
 ${sortedThemes.map((t: any) => `- ${t.name} (${t._count.feedbacks} items)`).join('\n')}
 
 Sample verbatim quotes:
-${rawFeedback.map(f => `[${f.sentiment}] ${f.channel}: "${f.content}"`).join('\n')}
+${rawFeedback.map((f: any) => `[${f.sentiment}] ${f.channel}: "${f.content}"`).join('\n')}
 `
 
     // 2. Call AI to write narrative
