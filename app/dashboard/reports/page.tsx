@@ -45,7 +45,14 @@ export default async function ReportsPage() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200 bg-white">
-            {reports.map((report) => (
+            {reports.map((report: {
+              id: string
+              title: string
+              periodStart: Date
+              periodEnd: Date
+              createdAt: Date
+              generatedBy: { name: string | null }
+            }) => (
               <tr key={report.id} className="hover:bg-gray-50 transition-colors">
                 <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-indigo-600 sm:pl-6">
                   <Link href={`/dashboard/reports/${report.id}`} className="flex items-center gap-2 hover:underline">

@@ -49,7 +49,12 @@ export default async function TrendsPage() {
       )}
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {themes.map(theme => (
+        {themes.map((theme: {
+          id: string
+          name: string
+          description: string | null
+          _count: { feedbacks: number }
+        }) => (
           <div key={theme.id} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 flex flex-col hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-gray-900 truncate" title={theme.name}>{theme.name}</h3>
