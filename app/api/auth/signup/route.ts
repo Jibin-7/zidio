@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     const passwordHash = await hash(password, 10)
 
     // Create Workspace and User in a transaction
-    const user = await prisma.$transaction(async (tx) => {
+    const user = await prisma.$transaction(async (tx: any) => {
       const workspace = await tx.workspace.create({
         data: {
           name: companyName,
