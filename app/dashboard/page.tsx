@@ -17,15 +17,16 @@ export default async function DashboardPage() {
 
   // Fetch sentiment breakdown
   const sentimentGroups = await prisma.feedback.groupBy({
-    by: ['sentiment'],
-    where: { workspaceId, sentiment: { not: null } },
-    _count: true
-  })
-  
-  const sentimentData = sentimentGroups.map(g => ({
-    name: g.sentiment as string,
+  by: ['sentiment'],
+  where: { workspaceId, sentiment: { not: null } },
+  _count: true
+});
+const sentimentData = sentimentGroups.map(
+  (g: { sentiment: string | null; _count: number }) => ({
+    name: g.sentiment ?? "UNKNOWN",
     value: g._count
-  }))
+  })
+);
 
   // Fetch top themes
   const topThemes = await prisma.theme.findMany({
