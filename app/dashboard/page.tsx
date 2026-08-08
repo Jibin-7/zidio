@@ -36,10 +36,12 @@ const sentimentData = sentimentGroups.map(
     take: 5
   })
 
-  const themesData = topThemes.map(t => ({
+  const themesData = topThemes.map(
+  (t: { name: string; _count: { feedbacks: number } }) => ({
     name: t.name,
     count: t._count.feedbacks
-  }))
+  })
+);
 
   // Fetch volume over time (last 7 days)
   const recentFeedback = await prisma.feedback.findMany({
