@@ -54,7 +54,7 @@ Positive Sentiment: ${posCount}
 Negative Sentiment: ${negCount}
 
 Top 3 Themes:
-${sortedThemes.map(t => `- ${t.name} (${t._count.feedbacks} items)`).join('\n')}
+${sortedThemes.map((t: any) => `- ${t.name} (${t._count.feedbacks} items)`).join('\n')}
 
 Sample verbatim quotes:
 ${rawFeedback.map(f => `[${f.sentiment}] ${f.channel}: "${f.content}"`).join('\n')}
@@ -88,10 +88,10 @@ Format the report using Markdown. Include these sections:
         markdownReport = res.text || ""
       } catch (err) {
         console.warn("AI generation failed for report, using silent fallback")
-        markdownReport = `# Voice of Customer Report\n\n## Executive Summary\nWe received ${totalCount} feedback items during this period.\n\n## Key Themes\n${sortedThemes.map(t => `- **${t.name}**: ${t._count.feedbacks} mentions`).join('\n')}\n\n*Note: AI narrative generation is currently operating in offline fallback mode due to quota limits.*`
+        markdownReport = `# Voice of Customer Report\n\n## Executive Summary\nWe received ${totalCount} feedback items during this period.\n\n## Key Themes\n${sortedThemes.map((t: any) => `- **${t.name}**: ${t._count.feedbacks} mentions`).join('\n')}\n\n*Note: AI narrative generation is currently operating in offline fallback mode due to quota limits.*`
       }
     } else {
-      markdownReport = `# Voice of Customer Report\n\n## Executive Summary\nWe received ${totalCount} feedback items during this period.\n\n## Key Themes\n${sortedThemes.map(t => `- **${t.name}**: ${t._count.feedbacks} mentions`).join('\n')}\n\n*Note: AI narrative generation requires an API key.*`
+      markdownReport = `# Voice of Customer Report\n\n## Executive Summary\nWe received ${totalCount} feedback items during this period.\n\n## Key Themes\n${sortedThemes.map((t: any) => `- **${t.name}**: ${t._count.feedbacks} mentions`).join('\n')}\n\n*Note: AI narrative generation requires an API key.*`
     }
 
     // 3. Save to database

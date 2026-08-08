@@ -67,7 +67,7 @@ export async function POST(req: Request) {
 
     // AI Classification
     const existingThemesData = await prisma.theme.findMany({ where: { workspaceId: user.workspaceId }, select: { name: true } })
-    const existingThemes = existingThemesData.map(t => t.name)
+    const existingThemes = existingThemesData.map((t: any) => t.name)
     const classification = await classifyFeedback(data.content, existingThemes)
 
     const feedback = await prisma.feedback.create({
@@ -113,7 +113,7 @@ export async function POST(req: Request) {
     return new Response(JSON.stringify(feedback), { status: 201 })
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return new Response(JSON.stringify({ error: error.errors }), { status: 400 })
+      return new Response(JSON.stringify({ error: error.issues }), { status: 400 })
     }
     return new Response("Internal Server Error", { status: 500 })
   }
