@@ -196,7 +196,7 @@ export default async function InboxPage({
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {feedbacks.map((item) => (
+                  {feedbacks.map((item: any) => (
                     <tr key={item.id} className="hover:bg-gray-50 cursor-pointer">
                       <td className="py-4 pl-4 pr-3 text-sm text-gray-900 sm:pl-6">
                         <div className="line-clamp-2">{item.content}</div>
