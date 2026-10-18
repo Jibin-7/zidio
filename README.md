@@ -1,12 +1,12 @@
-# Project LOOP — AI Customer-Feedback Intelligence Platform
+# Project LOOP | AI Customer Feedback Intelligence Platform
 
 Project LOOP is a corporate-grade, multi-tenant web application designed to help SaaS companies ingest, cluster, and make sense of their scattered customer feedback. Support tickets, app-store reviews, survey responses, and sales notes are ingested into a unified database where AI categorizes them, detects trending themes, and even answers plain-English questions grounded in your actual customer feedback.
 
-This project was built to satisfy the **Zidio Development Internship Project** rubric for the Web Development track.
+Developed as part of the Zidio Development internship, this project demonstrates multi-tenant feedback analysis and AI-assisted customer insight workflows.
 
 ---
 
-## 🚀 Tech Stack
+## Technology Stack
 
 Project LOOP is built on a modern, robust, production-ready stack:
 
@@ -22,7 +22,7 @@ Project LOOP is built on a modern, robust, production-ready stack:
 
 ---
 
-## 📐 Architecture Summary
+## Architecture
 
 LOOP follows a strict three-tier architecture ensuring robust security and AI integration:
 
@@ -32,20 +32,20 @@ LOOP follows a strict three-tier architecture ensuring robust security and AI in
 
 ---
 
-## 🔒 Demo Credentials Checklist
+## Demo Roles
 
 To verify the Role-Based Access Control (RBAC) implementation, use the following seeded credentials on the live deployment:
 
-- **Admin Account**: `admin@acme.com` / `password123`
+- **Admin Account**: `admin@acme.com` / `password123` (demo only)
   - *Permissions*: Full access (manage members, import feedback, generate AI reports)
-- **Analyst Account**: `analyst@acme.com` / `password123`
+- **Analyst Account**: `analyst@acme.com` / `password123` (demo only)
   - *Permissions*: Can ingest feedback, view dashboards, run Ask LOOP
-- **Viewer Account**: `viewer@acme.com` / `password123`
+- **Viewer Account**: `viewer@acme.com` / `password123` (demo only)
   - *Permissions*: Strictly Read-only access to dashboards and generated reports
 
 ---
 
-## 💻 Local Setup Steps
+## Local Development
 
 Follow these steps to run Project LOOP on your local machine:
 
@@ -90,4 +90,4 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-*Built with ❤️ during the Zidio Development Internship.*
+*Developed during the Zidio Development internship.*
